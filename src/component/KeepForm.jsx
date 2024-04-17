@@ -12,9 +12,7 @@ flex-direction: column;
 margin-top: 32px;
 `;
 
-
-
-const KeepForm = ({keep, setKeep}) => {
+const KeepForm = ({ keep, setKeep }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -31,15 +29,16 @@ const KeepForm = ({keep, setKeep}) => {
                 placeholder="Title"
                 type="text"
                 onChange={handleChange}
-                value={keep.title}
-                style={{ marginBottom: 16 }}
+                value={keep?.title}
+                style={{ marginBottom: 16, backgroundColor: "#feefc3", border: "none" }}
             />
             <TextArea
                 name="content"
-                placeholder="write down your note"
+                placeholder="Write down your note"
                 onChange={handleChange}
-                value={keep.content}
+                value={keep?.content}
                 rows={5}
+                style={{ backgroundColor: "#feefc3", border: "none" }}
             />
         </KeepContainer>
     )

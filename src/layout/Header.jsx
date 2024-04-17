@@ -50,7 +50,7 @@ const Header = ({title, onCreate}) => {
             </HeaderRow>
             <CreateButton onClick={() => onCreate()}>
                 <IoMdAdd style={{width: 24, height: 24}} />
-                <ButtonText>Create</ButtonText>
+                <ButtonText>Add Keep</ButtonText>
             </CreateButton>
         </HeaderContainer>
     )

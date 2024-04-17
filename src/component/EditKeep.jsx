@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import styled from 'styled-components';
 import KeepForm from './KeepForm';
@@ -9,31 +9,33 @@ const CustomModal = styled(Modal)`
     }
 `;
 
-const CreateKeep = ({ onAddKeep, modalType, setModalType }) => {
+const EditKeep = ({ data, onEditKeep, modalType, setModalType }) => {
 
-    const [keep, setKeep] = useState({ title: '', content: '' });
+    const [keep, setKeep] = useState({ title: '', content: '', id: '' });
 
     const handleClick = () => {
         if (keep.title === '' && keep.content === '') return
-        const id = Math.random().toString(36).substring(2, 18); // Random id
-        const newKeep = { ...keep, id: id } // Add id
-        onAddKeep(newKeep) // callBack
-        setKeep({ title: '', content: '' }); // reset state
-        setModalType(null); // close modal
+
+        onEditKeep(keep); // callback
+        setModalType(null);
     };
+
+    useEffect(() => {
+        setKeep(data);
+    }, [data]);
 
     return (
         <CustomModal
             destroyOnClose
             cancelText={'Cancel'}
-            okText={'Create'}
+            okText={'Update'}
             centered
-            open={modalType === "Create"}
+            open={modalType === "Edit"}
             maskClosable
             width={640}
             height={640}
             onOk={() => handleClick()}
-            onCancel={() => { setKeep({ title: '', content: '' }); setModalType(null); }}
+            onCancel={() => { setKeep(data); setModalType(null); }}
         >
             <KeepForm
                 keep={keep}
@@ -43,5 +45,4 @@ const CreateKeep = ({ onAddKeep, modalType, setModalType }) => {
     )
 }
 
-export default CreateKeep
-
+export default EditKeep
