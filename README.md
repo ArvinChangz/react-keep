@@ -1,3 +1,7 @@
+# Live Preview
+
+[Click me](https://f2egk-chiachengz0227-chang-arvin-2024-04-16.vercel.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
