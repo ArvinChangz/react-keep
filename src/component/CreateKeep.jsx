@@ -14,7 +14,7 @@ const CreateKeep = ({ onAddKeep, modalType, setModalType }) => {
     const [keep, setKeep] = useState({ title: '', content: '' });
 
     const handleClick = () => {
-        if (keep.title === '' && keep.content === '') return
+        if (keep.title === '' && keep.content === '') return setModalType(null);
         const id = Math.random().toString(36).substring(2, 18); // Random id
         const newKeep = { ...keep, id: id } // Add id
         onAddKeep(newKeep) // callBack
@@ -25,15 +25,14 @@ const CreateKeep = ({ onAddKeep, modalType, setModalType }) => {
     return (
         <CustomModal
             destroyOnClose
-            cancelText={'Cancel'}
-            okText={'Create'}
             centered
             open={modalType === "Create"}
             maskClosable
+            closeIcon={false}
             width={640}
             height={640}
-            onOk={() => handleClick()}
-            onCancel={() => { setKeep({ title: '', content: '' }); setModalType(null); }}
+            onCancel={() => { handleClick() }}
+            footer={null}
         >
             <KeepForm
                 keep={keep}

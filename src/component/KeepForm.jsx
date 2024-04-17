@@ -37,7 +37,7 @@ const KeepForm = ({ keep, setKeep }) => {
                 placeholder="Write down your note"
                 onChange={handleChange}
                 value={keep?.content}
-                rows={5}
+                rows={10}
                 style={{ backgroundColor: "#feefc3", border: "none" }}
             />
         </KeepContainer>

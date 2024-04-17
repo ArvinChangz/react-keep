@@ -77,7 +77,7 @@ function App() {
 
       {/* Modal */}
       <CreateKeep onAddKeep={handleAddKeep} modalType={modalType} setModalType={setModalType} />
-      <EditKeep data={selectedKeep} onEditKeep={handleEditKeep} modalType={modalType} setModalType={setModalType} />
+      <EditKeep data={selectedKeep} onEditKeep={handleEditKeep} onDeleteKeep={handleDeleteKeep} modalType={modalType} setModalType={setModalType} />
     </Container>
   );
 }

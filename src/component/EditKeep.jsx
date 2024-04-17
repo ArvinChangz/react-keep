@@ -9,12 +9,16 @@ const CustomModal = styled(Modal)`
     }
 `;
 
-const EditKeep = ({ data, onEditKeep, modalType, setModalType }) => {
+const EditKeep = ({ data, onEditKeep, modalType, setModalType, onDeleteKeep }) => {
 
     const [keep, setKeep] = useState({ title: '', content: '', id: '' });
 
     const handleClick = () => {
-        if (keep.title === '' && keep.content === '') return
+        if (keep.title === '' && keep.content === '') {
+            setModalType(null);
+            onDeleteKeep(data.id); // Delete if no title and content
+            return
+        };
 
         onEditKeep(keep); // callback
         setModalType(null);
@@ -27,15 +31,14 @@ const EditKeep = ({ data, onEditKeep, modalType, setModalType }) => {
     return (
         <CustomModal
             destroyOnClose
-            cancelText={'Cancel'}
-            okText={'Update'}
             centered
             open={modalType === "Edit"}
             maskClosable
+            closeIcon={false}
             width={640}
             height={640}
-            onOk={() => handleClick()}
-            onCancel={() => { setKeep(data); setModalType(null); }}
+            onCancel={() => { handleClick() }}
+            footer={null}
         >
             <KeepForm
                 keep={keep}
