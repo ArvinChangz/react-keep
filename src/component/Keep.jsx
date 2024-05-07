@@ -6,11 +6,11 @@ const KeepContainer = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-width: 180px;
+width: 21%;
 height: 220px;
 background-color: rgba(245, 224, 66, 0.4);
 padding: 12px;
-margin: 12px 12px;
+margin: 12px;
 `;
 
 const KeepTitle = styled.h2`

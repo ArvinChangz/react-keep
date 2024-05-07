@@ -13,12 +13,21 @@ display: flex;
 flex-direction: column;
 `;
 
+const ContentContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: 100%;
+justify-content: center;
+align-items: center;
+`;
+
 const RowContainer = styled.div`
 width: 100%;
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 align-items: center;
+justify-content: center;
 padding: 24px;
 `;
 
@@ -27,11 +36,6 @@ function App() {
   const [keeps, setKeeps] = useLocalStorage([], 'keeps');
   const [selectedKeep, setSelectedKeep] = useState({ title: "", content: "", id: "" });
   const [modalType, setModalType] = useState(null);
-
-  // Open Modal
-  const onCreate = () => {
-    setModalType('Create');
-  };
 
   // Open Modal
   const onEdit = (editData) => {
@@ -61,22 +65,24 @@ function App() {
 
   return (
     <Container>
-      <Header title={'Keep'} onCreate={onCreate} />
-      <RowContainer>
-        {keeps.map((x) => {
-          return (
-            <Keep
-              key={x.id}
-              data={x}
-              onDelete={handleDeleteKeep}
-              onEdit={onEdit}
-            />
-          )
-        })}
-      </RowContainer>
+      <Header title={'Keep'} />
+      <ContentContainer>
+        <CreateKeep onAddKeep={handleAddKeep} modalType={modalType} setModalType={setModalType} />
+        <RowContainer>
+          {keeps.map((x) => {
+            return (
+              <Keep
+                key={x.id}
+                data={x}
+                onDelete={handleDeleteKeep}
+                onEdit={onEdit}
+              />
+            )
+          })}
+        </RowContainer>
+      </ContentContainer>
 
       {/* Modal */}
-      <CreateKeep onAddKeep={handleAddKeep} modalType={modalType} setModalType={setModalType} />
       <EditKeep data={selectedKeep} onEditKeep={handleEditKeep} onDeleteKeep={handleDeleteKeep} modalType={modalType} setModalType={setModalType} />
     </Container>
   );
