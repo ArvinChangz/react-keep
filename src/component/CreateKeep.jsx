@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Modal } from 'antd';
-import styled from 'styled-components';
 import KeepForm from './KeepForm';
+import styled from "styled-components";
 
-const CustomModal = styled(Modal)`
-    .ant-modal-content {
-        background-color: #feefc3;
-    }
+const Container = styled.div`
+width: 70%;
+display: flex;
+flex-direction: column;
+background-color: #feefc3;
+margin-top: 18px;
+border-radius: 8px;
+padding: 12px;
 `;
 
 const CreateKeep = ({ onAddKeep, modalType, setModalType }) => {
@@ -23,22 +26,14 @@ const CreateKeep = ({ onAddKeep, modalType, setModalType }) => {
     };
 
     return (
-        <CustomModal
-            destroyOnClose
-            centered
-            open={modalType === "Create"}
-            maskClosable
-            closeIcon={false}
-            width={640}
-            height={640}
-            onCancel={() => { handleClick() }}
-            footer={null}
-        >
+        <Container>
             <KeepForm
                 keep={keep}
                 setKeep={setKeep}
+                type="Create"
+                handleCreate={handleClick}
             />
-        </CustomModal>
+        </Container>
     )
 }
 

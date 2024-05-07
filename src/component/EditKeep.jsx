@@ -43,6 +43,7 @@ const EditKeep = ({ data, onEditKeep, modalType, setModalType, onDeleteKeep }) =
             <KeepForm
                 keep={keep}
                 setKeep={setKeep}
+                type="Edit"
             />
         </CustomModal>
     )

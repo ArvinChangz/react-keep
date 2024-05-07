@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import { TiLightbulb } from "react-icons/ti";
-import { IoMdAdd } from "react-icons/io";
 
 const HeaderContainer = styled.div`
 height: 72px;
@@ -26,32 +25,13 @@ font-size: 36px;
 margin-left: 10px;
 `;
 
-const CreateButton = styled.button`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-border: none;
-background-color: transparent;
-cursor: pointer;
-`;
-
-const ButtonText = styled.p`
-font-size: 24px;
-margin-left: 8px;
-`;
-
-const Header = ({title, onCreate}) => {
+const Header = ({title}) => {
     return (
         <HeaderContainer>
             <HeaderRow>
                 <TiLightbulb style={{width: 32, height: 32}} />
                 <HeaderText>{title}</HeaderText>
             </HeaderRow>
-            <CreateButton onClick={() => onCreate()}>
-                <IoMdAdd style={{width: 24, height: 24}} />
-                <ButtonText>Add Keep</ButtonText>
-            </CreateButton>
         </HeaderContainer>
     )
 }
