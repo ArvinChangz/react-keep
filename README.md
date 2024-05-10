@@ -3,6 +3,7 @@
 - Ability to add plaintext as a note.
 - Edit notes from a pop-up and enable autosave.
 - View a list of all existing notes.
+- New: Able to add unordered lists, checkboxes, and images.
 
 ## Priview
 

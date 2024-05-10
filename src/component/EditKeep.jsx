@@ -11,21 +11,27 @@ const CustomModal = styled(Modal)`
 
 const EditKeep = ({ data, onEditKeep, modalType, setModalType, onDeleteKeep }) => {
 
-    const [keep, setKeep] = useState({ title: '', content: '', id: '' });
+    const [keep, setKeep] = useState({ title: '', content: '', id: '', keepType: '', image: null });
+
+    const [image, setImage] = useState(null);
 
     const handleClick = () => {
-        if (keep.title === '' && keep.content === '') {
+        if (keep.title === '' && keep.content === '' && keep.image === null) {
             setModalType(null);
             onDeleteKeep(data.id); // Delete if no title and content
             return
         };
 
-        onEditKeep(keep); // callback
+        onEditKeep({...keep, image: image}); // callback
         setModalType(null);
+        setImage(null);
     };
 
     useEffect(() => {
         setKeep(data);
+        if (data?.image) {
+            setImage(data.image);
+        };
     }, [data]);
 
     return (
@@ -44,6 +50,9 @@ const EditKeep = ({ data, onEditKeep, modalType, setModalType, onDeleteKeep }) =
                 keep={keep}
                 setKeep={setKeep}
                 type="Edit"
+                keepType={data?.keepType}
+                image={image}
+                setImage={setImage}
             />
         </CustomModal>
     )
