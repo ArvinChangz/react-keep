@@ -5,7 +5,7 @@
 - View a list of all existing notes.
 - New: Able to add unordered lists, checkboxes, and images.
 
-## Priview
+## Preview
 
 [Click me](https://react-keep-ebon.vercel.app/)
 
